@@ -1,17 +1,26 @@
-import React from 'react';
+import React  from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Card from './components/card/Card';
+import Header from './components/header/Header';
+import Api from './services/Api';
+
+let pokemon = [];
+
+Api.get("pikachu").then(({ data }) => {
+    pokemon.push(data);
+});
+
+console.log(pokemon);
+
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Header />
+    <Card />
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
