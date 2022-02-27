@@ -4,16 +4,15 @@ import Card from './components/card/Card';
 import Header from './components/header/Header';
 import Api from './services/Api';
 
-let pokemon = [];
+let pokeAbilities = [];
+let nomeAbilities;
 
 Api.get("pikachu").then(({ data }) => {
-    pokemon.push(data);
+  pokeAbilities.push(data.abilities);
+
 });
 
-console.log(pokemon);
-
-
-
+console.log(pokeAbilities);
 
 ReactDOM.render(
   <React.StrictMode>
