@@ -1,7 +1,9 @@
+import Display from "./components/display/Display";
 
 function App() {
-  return (
-    <p></p>
+
+  return(
+    <Display/>
   );
 }
 
