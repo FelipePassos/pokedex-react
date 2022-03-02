@@ -2,15 +2,16 @@ import Style from './Display.module.css';
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-
 function Display() {
-    
 
     let [poke, setPoke]=useState({});
     let [input, setInput] = useState('pikachu')
     let namePokemon;
     let heightPokemon;
-    let spritesPokemon = []
+    let weightPokemon;
+    let spritesPokemon = [];
+    let typesPokemon = [];
+    let abilitiesPoke = [];
 
     let handleSubmit = (e) => {
         e.preventDefault();
@@ -30,6 +31,8 @@ function Display() {
   
     let mapear = () => ( 
         Object.keys(poke).forEach( (key) => {
+          //  console.log(key);
+          //  console.log(poke[key]);
          
             if(key === 'name') {
                 namePokemon = poke[key];
@@ -40,6 +43,15 @@ function Display() {
             if(key === 'sprites') {
                 spritesPokemon = poke[key].other["official-artwork"].front_default;
             }
+            if(key === 'types') {
+                typesPokemon = poke[key];  
+            }
+            if(key === 'weight') {
+                weightPokemon = poke[key];
+            }
+            if(key === 'abilities') {
+                abilitiesPoke = poke[key];
+            }
         })
     )
         mapear();
@@ -48,27 +60,40 @@ function Display() {
         <>
             <div className={Style.header}>
                 <div className={Style.container}>
-                    <section>
-                        <h1>Pokemon</h1>
-                    </section>
-                    <form onSubmit={handleSubmit}>
+                        <span> <a className={Style.pokeTitulo}>Pokemon</a> </span>
+
+                    <span className={Style.pokePesquisa}>
+                    <form className={Style.formImput} onSubmit={handleSubmit}>
                         <input id="texto" className={Style.input} />
-                        <button type="submit" id="botao">enviar</button>
+                        <button type="submit" className={Style.botao}>🔎</button>
                     </form>
+                    </span>
                 </div>
             </div>
             <div className={Style.pai}>
                 <div className={Style.card}>
-                    <div className={Style.pokeFoto}><img alt='pokemon' src={spritesPokemon} /></div><div className={Style.pokeStats}></div>
+                    <div className={Style.pokeFotoDiv}><img className={Style.pokeFoto} alt='pokemon' src={spritesPokemon} /></div><div className={Style.pokeStats}>
+                        <h2 className={Style.pokesName}>{namePokemon}</h2>
+                        <div className={Style.rowInfo}>
+                            <h3 className={Style.atributesTitle}>ATRIBUTES</h3>
+                            {typesPokemon.map((key) => {
+                               return <span className={Style.atributes} key={key.type.name}>{key.type.name}</span>;
+                            })}
+                        </div>
+                        <div className={Style.rowInfo}>
+                            <h3 className={Style.atributesTitle}>ABILITIES</h3>
+                            {abilitiesPoke.map((key) => {
+                               return <span className={Style.abilities} key={key.ability.name}> {key.ability.name} </span>;
+                            })}
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
             <>
             <div>
-            nome: {namePokemon}
             </div>
-            <div>
-            altura: {heightPokemon}
-            </div>
+
 
             </>
         </>
