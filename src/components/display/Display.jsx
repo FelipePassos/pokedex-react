@@ -1,6 +1,6 @@
 import Style from './Display.module.css';
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Display() {
 
@@ -89,7 +89,13 @@ function Display() {
                 </div>
             </div>
             <>
-                <div>
+                <div className={Style.divRodape}>
+                    <container className={Style.container}>
+                    <a className={Style.textRodape}>
+                    Desenvolvidor por J. Felipe Passos. <a href='https://github.com/FelipePassos/pokedex-react'>Link</a> do repositorio
+                    </a>
+                    </container>
+                    
                 </div>
 
 

@@ -152,3 +152,15 @@
 .rowInfo {
     margin: 10px;
 }
+
+.divRodape {
+    background-color: #2F3136;
+    height: 50px;
+    display: flex;
+}
+
+.textRodape {
+    color: white;
+    font-family: Poppins;
+    line-height: 2.5rem;
+}
