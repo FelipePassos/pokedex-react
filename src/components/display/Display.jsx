@@ -7,6 +7,8 @@ function Display() {
     let [poke, setPoke] = useState({});
     let [input, setInput] = useState('pikachu')
     let namePokemon;
+    let heightPokemon = [];
+    let weightPokemon = [];
     let spritesPokemon = [];
     let typesPokemon = [];
     let abilitiesPoke = [];
